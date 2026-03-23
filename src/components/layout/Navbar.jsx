@@ -13,7 +13,7 @@ function Stat({ label, value, valueClassName = '' }) {
 
 function Navbar({ monthlyIncome, totalExpenses, remainingBalance }) {
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-brand-500/20 bg-black/85 backdrop-blur-md">
+    <header className="sticky top-0 z-20 border-b border-brand-500/20 bg-black/85 backdrop-blur-md">
       <div className="mx-auto flex w-full max-w-7xl flex-col gap-3 px-4 py-4 md:flex-row md:items-center md:justify-between md:px-6">
         <div>
           <h1 className="text-2xl font-bold tracking-tight">

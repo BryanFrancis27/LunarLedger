@@ -5,7 +5,7 @@ import { PAYABLE_CATEGORIES, normalizePayableCategory } from './payableUtils'
 
 function CategorySection({ title, items, onEdit, onDelete }) {
   return (
-    <section className="space-y-2">
+    <section className="min-w-0 space-y-2">
       <h3 className="text-sm font-semibold uppercase tracking-wide text-gray-200">{title}</h3>
 
       {items.length === 0 ? (
@@ -13,10 +13,14 @@ function CategorySection({ title, items, onEdit, onDelete }) {
           No entries in this category.
         </p>
       ) : (
-        <div className="rounded-xl border border-brand-500/20 bg-black/35 shadow-lg shadow-black/25">
+        <div className="min-w-0 rounded-xl border border-brand-500/20 bg-black/35 shadow-lg shadow-black/25">
           <p className="px-3 pt-3 text-xs text-gray-400 sm:hidden">Swipe horizontally to view all columns.</p>
-          <div className="scroll-x-touch scroll-x-mobile-only -mx-1 px-1 pb-1">
-            <table className="w-full min-w-[680px] text-left text-xs sm:min-w-[760px] sm:text-sm lg:min-w-full">
+          <div
+            className="table-x-scroll w-full max-w-full px-1 pb-1"
+            role="region"
+            aria-label={`${title} table horizontal scroll area`}
+          >
+            <table className="min-w-[640px] text-left text-xs sm:min-w-[760px] sm:text-sm lg:min-w-full lg:w-full">
             <thead>
               <tr className="border-b border-brand-500/20 text-gray-300">
                 <th className="px-3 py-2.5 font-semibold">Name</th>

@@ -223,6 +223,7 @@ textarea,
   overflow-x: auto;
   overscroll-behavior-x: contain;
   -webkit-overflow-scrolling: touch;
+  touch-action: pan-x;
   scrollbar-width: thin;
 }
 
@@ -243,7 +244,31 @@ textarea,
   overflow-x: auto;
   overscroll-behavior-x: contain;
   -webkit-overflow-scrolling: touch;
+  touch-action: pan-x;
   scrollbar-width: thin;
+}
+
+.table-x-scroll {
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  touch-action: pan-x;
+  scrollbar-width: thin;
+  scrollbar-gutter: stable;
+}
+
+.table-x-scroll::-webkit-scrollbar {
+  height: 9px;
+}
+
+.table-x-scroll::-webkit-scrollbar-track {
+  background: rgba(17, 17, 25, 0.45);
+}
+
+.table-x-scroll::-webkit-scrollbar-thumb {
+  background: rgba(138, 43, 226, 0.5);
+  border-radius: 999px;
 }
 
 @media (min-width: 768px) {

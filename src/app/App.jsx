@@ -150,7 +150,7 @@ function App() {
             {view === 'planner' && (
               <>
                 <section className="grid gap-4 xl:grid-cols-12">
-                  <div className="xl:col-span-5">
+                  <div className="min-w-0 xl:col-span-5">
                     <IncomeInput
                       weeklySalary={weeklySalary}
                       previousMonthBalance={previousMonthBalance}
@@ -160,7 +160,7 @@ function App() {
                     />
                   </div>
 
-                  <div className="xl:col-span-7">
+                  <div className="min-w-0 xl:col-span-7">
                     <PayableForm
                       onSubmit={handlePayableSubmit}
                       initialPayable={editingPayable}
@@ -170,7 +170,7 @@ function App() {
                 </section>
 
                 <section className="mt-4 grid gap-4 lg:grid-cols-12">
-                  <div className="lg:col-span-8">
+                  <div className="min-w-0 lg:col-span-8">
                     <PayablesTable
                       payables={payables}
                       onEdit={(id) => setEditingId(id)}
@@ -178,7 +178,7 @@ function App() {
                     />
                   </div>
 
-                  <div className="lg:col-span-4">
+                  <div className="min-w-0 lg:col-span-4">
                     <ExpensePieChart totalExpenses={totalExpenses} remainingBalance={remainingBalance} />
                   </div>
                 </section>
@@ -187,7 +187,7 @@ function App() {
 
             {view === 'insights' && (
               <section className="grid gap-4 xl:grid-cols-12">
-                <div className="xl:col-span-7">
+                <div className="min-w-0 xl:col-span-7">
                   <WeeklySummary
                     weeklySalary={weeklySalary}
                     weeklyExpenses={weeklyExpenses}
@@ -199,7 +199,7 @@ function App() {
                   />
                 </div>
 
-                <div className="xl:col-span-5">
+                <div className="min-w-0 xl:col-span-5">
                   <Card title="Calendar View" subtitle="Payable due dates by month">
                     <CalendarView payables={payables} weeklyExpenses={weeklyExpenses} />
                   </Card>

@@ -25,35 +25,33 @@ function ExpensePieChart({ totalExpenses, remainingBalance }) {
 
   return (
     <Card title="Monthly Distribution" subtitle="Expenses vs remaining balance">
-      <div className="scroll-x-mobile-only">
-        <div className="mx-auto h-[220px] min-w-[280px] w-full max-w-[280px] rounded-xl border border-brand-500/20 bg-black/35 p-2.5 transition-all duration-300 hover:shadow-[0_0_20px_rgba(138,43,226,0.18)] sm:h-[270px] sm:min-w-[340px] sm:max-w-[340px] sm:p-3 md:h-[320px] md:min-w-0 md:max-w-[420px]">
-          <Pie
-            data={data}
-            options={{
-              responsive: true,
-              maintainAspectRatio: false,
-              plugins: {
-                legend: {
-                  position: isPhone ? 'bottom' : 'top',
-                  labels: {
-                    color: '#d9d9e3',
-                    boxWidth: isPhone ? 10 : isTablet ? 12 : 14,
-                    font: {
-                      size: isPhone ? 10 : isTablet ? 11 : 12,
-                    },
+      <div className="mx-auto h-[220px] w-full max-w-[280px] rounded-xl border border-brand-500/20 bg-black/35 p-2.5 transition-all duration-300 hover:shadow-[0_0_20px_rgba(138,43,226,0.18)] sm:h-[270px] sm:max-w-[340px] sm:p-3 md:h-[320px] md:max-w-[420px]">
+        <Pie
+          data={data}
+          options={{
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                position: isPhone ? 'bottom' : 'top',
+                labels: {
+                  color: '#d9d9e3',
+                  boxWidth: isPhone ? 10 : isTablet ? 12 : 14,
+                  font: {
+                    size: isPhone ? 10 : isTablet ? 11 : 12,
                   },
                 },
-                tooltip: {
-                  backgroundColor: '#120f1e',
-                  borderColor: '#8a2be2',
-                  borderWidth: 1,
-                  titleColor: '#f5f3ff',
-                  bodyColor: '#e0e0e0',
-                },
               },
-            }}
-          />
-        </div>
+              tooltip: {
+                backgroundColor: '#120f1e',
+                borderColor: '#8a2be2',
+                borderWidth: 1,
+                titleColor: '#f5f3ff',
+                bodyColor: '#e0e0e0',
+              },
+            },
+          }}
+        />
       </div>
     </Card>
   )
