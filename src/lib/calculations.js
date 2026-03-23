@@ -51,8 +51,12 @@ export function calculateWeeklyBudgetSummary(
   const summary = weeks.map((week) => {
     const salaryWithCarryover = roundCurrency(baseSalary + (week === carryoverWeek ? carryoverAmount : 0))
     const expenses = roundCurrency(weeklyExpenses[week] || 0)
-    const savings = roundCurrency(salaryWithCarryover * normalizedSavingsRate)
-    const safeToSpend = roundCurrency(salaryWithCarryover - savings - expenses)
+    const remainingBeforeSavings = roundCurrency(salaryWithCarryover - expenses)
+    const defaultSavings = roundCurrency(salaryWithCarryover * normalizedSavingsRate)
+    const remainingAfterSavings = roundCurrency(remainingBeforeSavings - defaultSavings)
+    const canApplySavings = remainingAfterSavings >= 0
+    const savings = canApplySavings ? defaultSavings : 0
+    const safeToSpend = canApplySavings ? remainingAfterSavings : remainingBeforeSavings
 
     return {
       week,
@@ -62,6 +66,7 @@ export function calculateWeeklyBudgetSummary(
       safeToSpend,
       adjustedSafeToSpend: safeToSpend,
       carryover: 0,
+      savingsApplied: canApplySavings,
     }
   })
 

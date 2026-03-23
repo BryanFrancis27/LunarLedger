@@ -20,6 +20,7 @@ function WeeklySummary({
           expenses: week.expenses,
           cumulative: cumulativeExpenses[week.week] || 0,
           savings: week.savings,
+          savingsApplied: week.savingsApplied,
           safeToSpend: week.adjustedSafeToSpend,
           originalSafeToSpend: week.safeToSpend,
           carryover: week.carryover,
@@ -88,7 +89,7 @@ function WeeklySummary({
             <p className="text-sm text-brand-400">{formatCurrency(week.salary)}</p>
             <p className="mt-2 text-xs text-gray-400">Weekly Expenses</p>
             <p className="text-sm text-rose-400">{formatCurrency(week.expenses)}</p>
-            <p className="mt-2 text-xs text-gray-400">Savings (10%)</p>
+            <p className="mt-2 text-xs text-gray-400">{week.savingsApplied === false ? 'Savings (Skipped)' : 'Savings (10%)'}</p>
             <p className="text-sm text-amber-300">{formatCurrency(week.savings || 0)}</p>
             <p className="mt-2 text-xs text-gray-400">Cumulative Expenses</p>
             <p className="text-sm text-gray-300">{formatCurrency(week.cumulative)}</p>
