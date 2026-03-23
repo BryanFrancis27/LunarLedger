@@ -10,7 +10,7 @@ function ExpensePieChart({ totalExpenses, remainingBalance }) {
 
   return (
     <Card title="Monthly Distribution" subtitle="Expenses vs remaining balance">
-      <div className="mx-auto max-w-[280px] rounded-xl border border-brand-500/20 bg-black/35 p-3 transition-all duration-300 hover:shadow-[0_0_20px_rgba(138,43,226,0.18)]">
+      <div className="mx-auto w-full max-w-[320px] rounded-xl border border-brand-500/20 bg-black/35 p-3 transition-all duration-300 hover:shadow-[0_0_20px_rgba(138,43,226,0.18)] sm:max-w-[360px]">
         <Pie
           data={data}
           options={{

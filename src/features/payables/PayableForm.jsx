@@ -88,12 +88,12 @@ function PayableForm({ onSubmit, initialPayable, onCancel }) {
 
         {error ? <p className="text-sm text-rose-400">{error}</p> : null}
 
-        <div className="flex flex-wrap gap-2">
-          <Button type="submit" className="rounded-full">
+        <div className="flex flex-col gap-2 sm:flex-row sm:flex-wrap">
+          <Button type="submit" className="w-full rounded-full sm:w-auto">
             {initialPayable ? 'Update Payable' : 'Add Payable'}
           </Button>
           {initialPayable ? (
-            <Button type="button" variant="secondary" className="rounded-full" onClick={onCancel}>
+            <Button type="button" variant="secondary" className="w-full rounded-full sm:w-auto" onClick={onCancel}>
               Cancel
             </Button>
           ) : null}

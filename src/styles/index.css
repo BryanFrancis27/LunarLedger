@@ -19,6 +19,7 @@
 body {
   margin: 0;
   min-height: 100vh;
+  overflow-x: hidden;
   background:
     radial-gradient(circle at 10% 5%, rgba(138, 43, 226, 0.28), transparent 45%),
     radial-gradient(circle at 85% 10%, rgba(75, 0, 130, 0.22), transparent 40%),
@@ -189,4 +190,31 @@ textarea,
 
 .calendar-shell .fc-daygrid-day:hover {
   background-color: rgba(138, 43, 226, 0.07);
+}
+
+@media (max-width: 640px) {
+  .calendar-shell {
+    overflow-x: auto;
+  }
+
+  .calendar-shell .fc .fc-toolbar {
+    flex-direction: column;
+    gap: 0.5rem;
+    align-items: flex-start;
+  }
+
+  .calendar-shell .fc .fc-toolbar-title {
+    font-size: 0.95rem;
+  }
+
+  .calendar-shell .fc .fc-button {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.72rem;
+  }
+
+  .calendar-shell .fc .fc-col-header-cell-cushion,
+  .calendar-shell .fc .fc-daygrid-day-number,
+  .calendar-shell .fc .fc-event-title {
+    font-size: 0.72rem;
+  }
 }

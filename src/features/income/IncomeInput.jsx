@@ -103,11 +103,11 @@ function IncomeInput({
             </select>
           </label>
 
-          <div className="flex justify-end">
+          <div className="flex justify-stretch sm:justify-end">
             <Button
               type="button"
               variant="secondary"
-              className="rounded-full"
+              className="w-full rounded-full sm:w-auto"
               onClick={() => {
                 setPreviousMonthBalanceInput('')
                 onClearPreviousMonthBalance()

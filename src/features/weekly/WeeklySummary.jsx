@@ -36,7 +36,7 @@ function WeeklySummary({
             key={week.week}
             className="group relative rounded-xl border border-brand-500/20 bg-black/35 p-3 transition-all duration-300 hover:border-brand-500/45 hover:shadow-[0_0_20px_rgba(138,43,226,0.2)]"
           >
-            <div className="pointer-events-none absolute inset-x-2 bottom-full z-20 mb-1 translate-y-2 scale-95 rounded-xl border border-brand-500/40 bg-[#0d0a16]/95 p-3 opacity-0 shadow-2xl shadow-brand-900/30 transition-all duration-300 group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100">
+            <div className="pointer-events-none absolute inset-x-2 bottom-full z-20 mb-1 hidden translate-y-2 scale-95 rounded-xl border border-brand-500/40 bg-[#0d0a16]/95 p-3 opacity-0 shadow-2xl shadow-brand-900/30 transition-all duration-300 group-hover:translate-y-0 group-hover:scale-100 group-hover:opacity-100 md:block">
               <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-brand-400">
                 Week {week.week} Due Expenses
               </p>
@@ -56,6 +56,21 @@ function WeeklySummary({
             </div>
 
             <h3 className="text-sm font-semibold text-white">Week {week.week}</h3>
+            <div className="mt-2 rounded-lg border border-brand-500/20 bg-black/20 p-2 md:hidden">
+              <p className="mb-1 text-xs font-semibold uppercase tracking-wide text-brand-400">Due Expenses</p>
+              {payablesByWeek[week.week].length === 0 ? (
+                <p className="text-xs text-gray-400">No expenses due for this week.</p>
+              ) : (
+                <ul className="space-y-1">
+                  {payablesByWeek[week.week].map((item) => (
+                    <li key={item.id} className="flex items-center justify-between gap-2 text-xs text-gray-200">
+                      <span className="truncate">{item.name}</span>
+                      <span className="shrink-0 text-brand-400">{formatCurrency(item.amount)}</span>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
             <p className="mt-2 text-xs text-gray-400">Salary</p>
             <p className="text-sm text-brand-400">{formatCurrency(week.salary)}</p>
             <p className="mt-2 text-xs text-gray-400">Weekly Expenses</p>

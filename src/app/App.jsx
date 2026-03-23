@@ -75,7 +75,7 @@ function App() {
         />
 
         <Container>
-          <section className="mb-4 flex flex-col gap-3 rounded-xl border border-brand-500/20 bg-black/25 px-4 py-3 sm:flex-row sm:items-end sm:justify-between">
+          <section className="mb-4 flex flex-col gap-3 rounded-xl border border-brand-500/20 bg-black/25 px-3 py-3 sm:flex-row sm:items-end sm:justify-between sm:px-4">
             <div>
               <h2 className="text-base font-semibold text-white">{view === 'planner' ? 'Planner' : 'Insights'}</h2>
               <p className="text-xs text-gray-400">
@@ -85,7 +85,7 @@ function App() {
               </p>
             </div>
 
-            <div ref={viewMenuRef} className="relative w-full max-w-[220px] shrink-0">
+            <div ref={viewMenuRef} className="relative w-full sm:max-w-[220px] sm:shrink-0">
               <button
                 type="button"
                 id="view-switch-main"
@@ -145,7 +145,7 @@ function App() {
             </div>
           </section>
 
-          <div className="max-h-[calc(100vh-15rem)] overflow-y-auto pr-1">
+          <div className="pr-0 lg:max-h-[calc(100vh-15rem)] lg:overflow-y-auto lg:pr-1">
             {view === 'planner' && (
               <>
                 <section className="grid gap-4 xl:grid-cols-12">

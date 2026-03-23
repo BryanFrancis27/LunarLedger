@@ -14,7 +14,7 @@ function CategorySection({ title, items, onEdit, onDelete }) {
         </p>
       ) : (
         <div className="overflow-x-auto rounded-xl border border-brand-500/20 bg-black/35 shadow-lg shadow-black/25">
-          <table className="w-full min-w-[620px] text-left text-sm">
+          <table className="w-full min-w-[560px] text-left text-sm">
             <thead>
               <tr className="border-b border-brand-500/20 text-gray-300">
                 <th className="px-3 py-2.5 font-semibold">Name</th>
@@ -35,7 +35,7 @@ function CategorySection({ title, items, onEdit, onDelete }) {
                   <td className="px-3 py-3">{item.dueDate}</td>
                   <td className="px-3 py-3">Week {getWeekOfMonth(item.dueDate)}</td>
                   <td className="px-3 py-3">
-                    <div className="flex gap-2">
+                    <div className="flex flex-col gap-2 sm:flex-row">
                       <Button variant="secondary" className="rounded-full px-3 py-1.5" onClick={() => onEdit(item.id)}>
                         Edit
                       </Button>

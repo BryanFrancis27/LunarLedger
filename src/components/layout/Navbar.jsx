@@ -20,7 +20,7 @@ function Navbar({ monthlyIncome, totalExpenses, remainingBalance }) {
           </h1>
         </div>
 
-        <div className="grid grid-cols-3 gap-2">
+        <div className="grid grid-cols-1 gap-2 sm:grid-cols-3">
           <Stat label="Income" value={formatCurrency(monthlyIncome)} valueClassName="text-brand-400" />
           <Stat label="Expenses" value={formatCurrency(totalExpenses)} valueClassName="text-rose-300" />
           <Stat label="Balance" value={formatCurrency(remainingBalance)} valueClassName="text-emerald-400" />
