@@ -13,8 +13,10 @@ function CategorySection({ title, items, onEdit, onDelete }) {
           No entries in this category.
         </p>
       ) : (
-        <div className="overflow-x-auto rounded-xl border border-brand-500/20 bg-black/35 shadow-lg shadow-black/25">
-          <table className="w-full min-w-[560px] text-left text-sm">
+        <div className="rounded-xl border border-brand-500/20 bg-black/35 shadow-lg shadow-black/25">
+          <p className="px-3 pt-3 text-xs text-gray-400 sm:hidden">Swipe horizontally to view all columns.</p>
+          <div className="scroll-x-touch scroll-x-mobile-only -mx-1 px-1 pb-1">
+            <table className="w-full min-w-[680px] text-left text-xs sm:min-w-[760px] sm:text-sm lg:min-w-full">
             <thead>
               <tr className="border-b border-brand-500/20 text-gray-300">
                 <th className="px-3 py-2.5 font-semibold">Name</th>
@@ -30,10 +32,10 @@ function CategorySection({ title, items, onEdit, onDelete }) {
                   key={item.id}
                   className="border-b border-white/5 text-gray-200 transition-all duration-300 hover:bg-brand-500/10 hover:shadow-[inset_0_0_0_1px_rgba(138,43,226,0.2)]"
                 >
-                  <td className="px-3 py-3">{item.name}</td>
-                  <td className="px-3 py-3 text-brand-400">{formatCurrency(item.amount)}</td>
-                  <td className="px-3 py-3">{item.dueDate}</td>
-                  <td className="px-3 py-3">Week {getWeekOfMonth(item.dueDate)}</td>
+                  <td className="px-3 py-3 whitespace-nowrap">{item.name}</td>
+                  <td className="px-3 py-3 whitespace-nowrap text-brand-400">{formatCurrency(item.amount)}</td>
+                  <td className="px-3 py-3 whitespace-nowrap">{item.dueDate}</td>
+                  <td className="px-3 py-3 whitespace-nowrap">Week {getWeekOfMonth(item.dueDate)}</td>
                   <td className="px-3 py-3">
                     <div className="flex flex-col gap-2 sm:flex-row">
                       <Button variant="secondary" className="rounded-full px-3 py-1.5" onClick={() => onEdit(item.id)}>
@@ -47,7 +49,8 @@ function CategorySection({ title, items, onEdit, onDelete }) {
                 </tr>
               ))}
             </tbody>
-          </table>
+            </table>
+          </div>
         </div>
       )}
     </section>

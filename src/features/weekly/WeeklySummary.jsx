@@ -7,11 +7,24 @@ function WeeklySummary({
   weeklySalary,
   weeklyExpenses,
   cumulativeExpenses,
+  weeklyBudgetSummary,
   safeToSpend,
   previousMonthBalance,
   payables,
 }) {
-  const rows = getWeeklyRows(weeklySalary, weeklyExpenses, cumulativeExpenses, safeToSpend)
+  const rows =
+    weeklyBudgetSummary && weeklyBudgetSummary.length > 0
+      ? weeklyBudgetSummary.map((week) => ({
+          week: week.week,
+          salary: week.salary,
+          expenses: week.expenses,
+          cumulative: cumulativeExpenses[week.week] || 0,
+          savings: week.savings,
+          safeToSpend: week.adjustedSafeToSpend,
+          originalSafeToSpend: week.safeToSpend,
+          carryover: week.carryover,
+        }))
+      : getWeeklyRows(weeklySalary, weeklyExpenses, cumulativeExpenses, safeToSpend)
   const hasCarryover = (Number(previousMonthBalance?.amount) || 0) > 0
   const payablesByWeek = payables.reduce(
     (weeks, item) => {
@@ -75,12 +88,17 @@ function WeeklySummary({
             <p className="text-sm text-brand-400">{formatCurrency(week.salary)}</p>
             <p className="mt-2 text-xs text-gray-400">Weekly Expenses</p>
             <p className="text-sm text-rose-400">{formatCurrency(week.expenses)}</p>
+            <p className="mt-2 text-xs text-gray-400">Savings (10%)</p>
+            <p className="text-sm text-amber-300">{formatCurrency(week.savings || 0)}</p>
             <p className="mt-2 text-xs text-gray-400">Cumulative Expenses</p>
             <p className="text-sm text-gray-300">{formatCurrency(week.cumulative)}</p>
             <p className="mt-2 text-xs text-gray-400">Safe To Spend</p>
             <p className={`text-sm font-semibold ${week.safeToSpend < 0 ? 'text-rose-400' : 'text-emerald-400'}`}>
               {formatCurrency(week.safeToSpend)}
             </p>
+            {Number(week.originalSafeToSpend) < 0 ? (
+              <p className="text-xs font-medium text-amber-300">Carryover: {formatCurrency(week.carryover || 0)}</p>
+            ) : null}
           </article>
         ))}
       </div>

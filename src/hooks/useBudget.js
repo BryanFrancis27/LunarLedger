@@ -1,6 +1,6 @@
 import {
   calculateMonthlyIncome,
-  calculateSafeSpend,
+  calculateWeeklyBudgetSummary,
   calculateTotalExpenses,
   calculateWeeklyExpenses,
   getCumulativeExpenses,
@@ -99,7 +99,14 @@ export function useBudget() {
   const totalAvailableIncome = monthlyIncome + previousMonthBalance.amount
   const weeklyExpenses = calculateWeeklyExpenses(payables)
   const cumulativeExpenses = getCumulativeExpenses(weeklyExpenses)
-  const safeToSpend = calculateSafeSpend(weeklySalary, weeklyExpenses, previousMonthBalance)
+  const weeklyBudgetSummary = calculateWeeklyBudgetSummary(weeklySalary, weeklyExpenses, previousMonthBalance)
+  const safeToSpend = weeklyBudgetSummary.reduce(
+    (weeks, item) => ({
+      ...weeks,
+      [item.week]: item.adjustedSafeToSpend,
+    }),
+    { 1: 0, 2: 0, 3: 0, 4: 0 },
+  )
   const totalExpenses = calculateTotalExpenses(payables)
   const remainingBalance = totalAvailableIncome - totalExpenses
 
@@ -111,6 +118,7 @@ export function useBudget() {
     previousMonthBalance,
     weeklyExpenses,
     cumulativeExpenses,
+    weeklyBudgetSummary,
     safeToSpend,
     totalExpenses,
     remainingBalance,

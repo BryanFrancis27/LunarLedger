@@ -16,6 +16,7 @@ function App() {
     previousMonthBalance,
     weeklyExpenses,
     cumulativeExpenses,
+    weeklyBudgetSummary,
     safeToSpend,
     totalExpenses,
     remainingBalance,
@@ -61,7 +62,7 @@ function App() {
   }
 
   return (
-    <div className="bg-modern relative min-h-screen text-gray-200">
+    <div className="bg-modern relative min-h-screen overflow-x-hidden text-gray-200">
       <div className="pointer-events-none absolute inset-0 opacity-70">
         <div className="absolute left-12 top-16 h-64 w-64 rounded-full bg-brand-500/10 blur-3xl" />
         <div className="absolute bottom-20 right-10 h-72 w-72 rounded-full bg-brand-600/15 blur-3xl" />
@@ -145,7 +146,7 @@ function App() {
             </div>
           </section>
 
-          <div className="pr-0 lg:max-h-[calc(100vh-15rem)] lg:overflow-y-auto lg:pr-1">
+          <div className="pr-0 lg:pr-1">
             {view === 'planner' && (
               <>
                 <section className="grid gap-4 xl:grid-cols-12">
@@ -168,8 +169,8 @@ function App() {
                   </div>
                 </section>
 
-                <section className="mt-4 grid gap-4 xl:grid-cols-12">
-                  <div className="xl:col-span-8">
+                <section className="mt-4 grid gap-4 lg:grid-cols-12">
+                  <div className="lg:col-span-8">
                     <PayablesTable
                       payables={payables}
                       onEdit={(id) => setEditingId(id)}
@@ -177,7 +178,7 @@ function App() {
                     />
                   </div>
 
-                  <div className="xl:col-span-4">
+                  <div className="lg:col-span-4">
                     <ExpensePieChart totalExpenses={totalExpenses} remainingBalance={remainingBalance} />
                   </div>
                 </section>
@@ -191,6 +192,7 @@ function App() {
                     weeklySalary={weeklySalary}
                     weeklyExpenses={weeklyExpenses}
                     cumulativeExpenses={cumulativeExpenses}
+                    weeklyBudgetSummary={weeklyBudgetSummary}
                     safeToSpend={safeToSpend}
                     previousMonthBalance={previousMonthBalance}
                     payables={payables}

@@ -218,3 +218,36 @@ textarea,
     font-size: 0.72rem;
   }
 }
+
+.scroll-x-touch {
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+
+.scroll-x-touch::-webkit-scrollbar {
+  height: 8px;
+}
+
+.scroll-x-touch::-webkit-scrollbar-track {
+  background: rgba(17, 17, 25, 0.45);
+}
+
+.scroll-x-touch::-webkit-scrollbar-thumb {
+  background: rgba(138, 43, 226, 0.45);
+  border-radius: 999px;
+}
+
+.scroll-x-mobile-only {
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+}
+
+@media (min-width: 768px) {
+  .scroll-x-mobile-only {
+    overflow-x: visible;
+  }
+}
