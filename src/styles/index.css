@@ -1,0 +1,192 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg-main: #0a0a0a;
+  --panel-bg: #111119;
+  --panel-soft: #161624;
+  --text-main: #e0e0e0;
+  --muted-text: #9ca3af;
+  --violet-deep: #4b0082;
+  --violet-bright: #8a2be2;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at 10% 5%, rgba(138, 43, 226, 0.28), transparent 45%),
+    radial-gradient(circle at 85% 10%, rgba(75, 0, 130, 0.22), transparent 40%),
+    linear-gradient(170deg, #0e0a16 0%, var(--bg-main) 35%, #050508 100%);
+  color: var(--text-main);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  caret-color: transparent;
+  color-scheme: dark;
+}
+
+input,
+textarea,
+[contenteditable='true'] {
+  caret-color: auto;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+@layer components {
+  .bg-modern {
+    background:
+      radial-gradient(circle at top left, rgba(75, 0, 130, 0.35), transparent 36%),
+      radial-gradient(circle at 85% 15%, rgba(138, 43, 226, 0.2), transparent 40%),
+      linear-gradient(170deg, #0e0a16 0%, var(--bg-main) 38%, #060608 100%);
+  }
+
+  .panel-modern {
+    @apply rounded-2xl border p-4 md:p-5;
+    border-color: rgba(138, 43, 226, 0.22);
+    background: linear-gradient(165deg, rgba(22, 22, 36, 0.92), rgba(10, 10, 10, 0.95));
+    box-shadow:
+      0 20px 45px rgba(0, 0, 0, 0.4),
+      0 0 0 1px rgba(138, 43, 226, 0.08),
+      0 0 26px rgba(75, 0, 130, 0.22);
+    transition: all 300ms ease-in-out;
+  }
+
+  .panel-modern:hover {
+    border-color: rgba(138, 43, 226, 0.36);
+    box-shadow:
+      0 24px 55px rgba(0, 0, 0, 0.45),
+      0 0 0 1px rgba(138, 43, 226, 0.14),
+      0 0 34px rgba(138, 43, 226, 0.26);
+  }
+
+  .btn-modern {
+    @apply rounded-lg px-5 py-2.5 text-sm font-semibold text-white transition-all duration-300 ease-in-out;
+    background: linear-gradient(90deg, var(--violet-deep), var(--violet-bright));
+    box-shadow: 0 8px 20px rgba(75, 0, 130, 0.35);
+  }
+
+  .btn-modern:hover {
+    box-shadow:
+      0 12px 30px rgba(75, 0, 130, 0.48),
+      0 0 16px rgba(138, 43, 226, 0.5);
+    transform: translateY(-1px);
+  }
+
+  .btn-modern-secondary {
+    @apply rounded-lg border px-5 py-2.5 text-sm font-semibold text-gray-200 transition-all duration-300 ease-in-out;
+    border-color: rgba(138, 43, 226, 0.35);
+    background-color: rgba(26, 26, 26, 0.92);
+  }
+
+  .btn-modern-secondary:hover {
+    @apply text-white;
+    border-color: rgba(138, 43, 226, 0.65);
+    box-shadow: 0 0 14px rgba(138, 43, 226, 0.32);
+  }
+
+  .btn-modern-danger {
+    @apply rounded-lg px-5 py-2.5 text-sm font-semibold text-white transition-all duration-300 ease-in-out;
+    background: linear-gradient(90deg, #9f1239, #e11d48);
+    box-shadow: 0 8px 20px rgba(225, 29, 72, 0.28);
+  }
+
+  .btn-modern-danger:hover {
+    box-shadow: 0 0 16px rgba(251, 113, 133, 0.42);
+  }
+
+  .input-modern {
+    @apply w-full rounded-lg border px-4 py-2.5 text-gray-200 outline-none transition-all duration-300 ease-in-out placeholder:text-gray-400;
+    border-color: #2d2b3b;
+    background-color: #1a1a1a;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.03);
+  }
+
+  input[type='number'].input-modern::-webkit-outer-spin-button,
+  input[type='number'].input-modern::-webkit-inner-spin-button {
+    background: transparent;
+    border: 0;
+    margin-right: 0.35rem;
+    opacity: 0.45;
+    transform: scale(0.82);
+    filter: grayscale(1);
+  }
+
+  select.input-modern {
+    padding-right: 2.85rem;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%23d8b4fe' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+    background-size: 0.9rem;
+  }
+
+  select.input-modern::-ms-expand {
+    display: none;
+  }
+
+  select.input-modern option {
+    background-color: #140f22;
+    color: #f3e8ff;
+  }
+
+  input[type='date'].input-modern {
+    color-scheme: dark;
+  }
+
+  input[type='date'].input-modern::-webkit-calendar-picker-indicator {
+    filter: brightness(1.15) saturate(1.15);
+    opacity: 0.85;
+  }
+
+  .input-modern:focus {
+    border-color: rgba(138, 43, 226, 0.95);
+    box-shadow:
+      0 0 0 1px rgba(138, 43, 226, 0.85),
+      0 0 16px rgba(138, 43, 226, 0.26);
+  }
+}
+
+.calendar-shell .fc {
+  color: #e5e7eb;
+}
+
+.calendar-shell .fc-theme-standard td,
+.calendar-shell .fc-theme-standard th,
+.calendar-shell .fc-theme-standard .fc-scrollgrid {
+  border-color: rgba(138, 43, 226, 0.2);
+}
+
+.calendar-shell .fc-toolbar-title {
+  color: #f9fafb;
+  font-size: 1rem;
+}
+
+.calendar-shell .fc-col-header-cell {
+  background: linear-gradient(180deg, rgba(31, 20, 52, 0.95), rgba(15, 10, 27, 0.95));
+}
+
+.calendar-shell .fc-col-header-cell-cushion {
+  color: #ddd6fe;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.calendar-shell .fc-button-primary {
+  border: 1px solid rgba(138, 43, 226, 0.5) !important;
+  background: linear-gradient(90deg, #4b0082, #8a2be2) !important;
+}
+
+.calendar-shell .fc-button-primary:hover {
+  box-shadow: 0 0 12px rgba(138, 43, 226, 0.45);
+}
+
+.calendar-shell .fc-daygrid-day:hover {
+  background-color: rgba(138, 43, 226, 0.07);
+}
